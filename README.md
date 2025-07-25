@@ -15,8 +15,8 @@ This fun quiz helps you discover your **dev personality** — whether you're a *
 ---
 
 ## 🖼 Demo Preview  
-Add a screenshot (optional):  
-`![Preview](preview.png)`
+![Watch the video](preview.mp4)
+
 
 ---
 
