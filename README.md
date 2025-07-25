@@ -26,7 +26,14 @@ Add a screenshot (optional):
 - **Vanilla JavaScript** for quiz logic  
 
 ---
+## 🎮 How to Play
 
+    Answer the questions honestly (or not 😉).
+
+    Click "Submit" to see your developer personality.
+
+    Share it with your dev friends for fun!
+---
 ## 🚀 How to Run Locally  
 1. Download or clone the repository:  
    ```bash
