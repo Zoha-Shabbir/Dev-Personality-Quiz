@@ -15,48 +15,60 @@
     <div class="question">
       <h3>1. What’s your coding vibe?</h3>
       <label><input type="radio" name="q1" value="cpp">🧠 I love structure and strict rules</label>
-      <label><input type="radio" name="q1" value="python">🐍 I prefer clean, readable code </label>
-      <label><input type="radio" name="q1" value="js">🎨 I like experimenting and chaos</label>
+      <label><input type="radio" name="q1" value="python">🐍 Clean, readable code</label>
+      <label><input type="radio" name="q1" value="js">🎨 Experiment and chaos</label>
+      <label><input type="radio" name="q1" value="db">🧱 I love organizing data and schemas</label>
+      <label><input type="radio" name="q1" value="frontend">💅 Making beautiful, user-friendly UIs</label>
     </div>
 
     <!-- Question 2 -->
     <div class="question">
       <h3>2. Your dream project would be...</h3>
-      <label><input type="radio" name="q2" value="cpp">🏦 Building a banking system</label>
-      <label><input type="radio" name="q2" value="python">🤖 Automating boring tasks</label>
-      <label><input type="radio" name="q2" value="js">🎮 Making a game or interactive website</label>
+      <label><input type="radio" name="q2" value="cpp">🏦 A secure banking system</label>
+      <label><input type="radio" name="q2" value="python">🤖 Automating everything!</label>
+      <label><input type="radio" name="q2" value="js">🎮 An interactive game</label>
+      <label><input type="radio" name="q2" value="db">📊 A database for thousands of users</label>
+      <label><input type="radio" name="q2" value="frontend">🎨 A stunning portfolio website</label>
     </div>
 
     <!-- Question 3 -->
     <div class="question">
       <h3>3. What's your biggest coding strength?</h3>
-      <label><input type="radio" name="q3" value="cpp">📐 Problem-solving & logic</label>
+      <label><input type="radio" name="q3" value="cpp">📐 Logic & algorithms</label>
       <label><input type="radio" name="q3" value="python">⚙️ Simplicity & efficiency</label>
-      <label><input type="radio" name="q3" value="js">✨ Creativity & visuals</label>
+      <label><input type="radio" name="q3" value="js">⚡ Fast prototyping</label>
+      <label><input type="radio" name="q3" value="db">🔎 Querying and data structuring</label>
+      <label><input type="radio" name="q3" value="frontend">✨ Creativity & attention to design</label>
     </div>
 
     <!-- Question 4 -->
     <div class="question">
       <h3>4. How do you deal with bugs?</h3>
       <label><input type="radio" name="q4" value="cpp">🔍 Debug like a detective 🕵️</label>
-      <label><input type="radio" name="q4" value="python">🧘 Calmly read the docs</label>
+      <label><input type="radio" name="q4" value="python">🧘 Calmly read docs & StackOverflow</label>
       <label><input type="radio" name="q4" value="js">💣 Refresh and try random stuff</label>
+      <label><input type="radio" name="q4" value="db">🗂 Check the schema & constraints</label>
+      <label><input type="radio" name="q4" value="frontend">🖌 Fix the CSS or blame the browser 😅</label>
     </div>
 
     <!-- Question 5 -->
     <div class="question">
       <h3>5. Favorite snack while coding?</h3>
-      <label><input type="radio" name="q5" value="cpp">☕ Chai or coffee</label>
-      <label><input type="radio" name="q5" value="python">🍫 Chocolate or biscuits</label>
-      <label><input type="radio" name="q5" value="js">🍕 Pizza, obviously!</label>
+      <label><input type="radio" name="q5" value="cpp">☕ Coffee / Chai</label>
+      <label><input type="radio" name="q5" value="python">🍫 Chocolate</label>
+      <label><input type="radio" name="q5" value="js">🍕 Pizza!</label>
+      <label><input type="radio" name="q5" value="db">🥨 Something crunchy</label>
+      <label><input type="radio" name="q5" value="frontend">🍵 Matcha & a cozy playlist</label>
     </div>
 
     <!-- Question 6 -->
     <div class="question">
       <h3>6. If coding were a vibe, you'd be...</h3>
-      <label><input type="radio" name="q6" value="cpp">📊 Organized and logical</label>
-      <label><input type="radio" name="q6" value="python">🌿 Minimal and clean</label>
-      <label><input type="radio" name="q6" value="js">🎆 Wild but it works!</label>
+      <label><input type="radio" name="q6" value="cpp">📊 Precise & logical</label>
+      <label><input type="radio" name="q6" value="python">🌿 Clean & calm</label>
+      <label><input type="radio" name="q6" value="js">🎆 Wild but functional</label>
+      <label><input type="radio" name="q6" value="db">📚 Structured & layered</label>
+      <label><input type="radio" name="q6" value="frontend">🌈 Aesthetic & user-focused</label>
     </div>
 
     <button type="button" class="submit-btn" onclick="showResult()">See My Dev Personality 🚀</button>
@@ -70,30 +82,53 @@
 
 <script>
   function showResult() {
-    let cpp = 0, python = 0, js = 0;
+    const scores = {
+      cpp: 0,
+      python: 0,
+      js: 0,
+      db: 0,
+      frontend: 0
+    };
+
     for (let i = 1; i <= 6; i++) {
       const selected = document.querySelector('input[name="q' + i + '"]:checked');
-      if (selected) {
-        if (selected.value === 'cpp') cpp++;
-        else if (selected.value === 'python') python++;
-        else if (selected.value === 'js') js++;
+      if (selected) scores[selected.value]++;
+    }
+
+    let maxKey = null;
+    let maxVal = -1;
+    for (const key in scores) {
+      if (scores[key] > maxVal) {
+        maxVal = scores[key];
+        maxKey = key;
       }
     }
 
-    let title = '', desc = '';
-    if (cpp >= python && cpp >= js) {
-      title = '🧠 The Structured Thinker (C++)';
-      desc = 'You love logic, structure, and solving problems step-by-step. You’d rock at building strong backend systems and efficient code.';
-    } else if (python >= cpp && python >= js) {
-      title = '🐍 The Minimalist Coder (Python)';
-      desc = 'You believe in writing clean, readable, and purposeful code. You’d thrive in automation, data, or backend simplicity.';
-    } else {
-      title = '🎨 The Creative Hacker (JavaScript)';
-      desc = 'You thrive in chaos, experiment fearlessly, and make magic with pixels and logic. Your energy belongs in interactive design and clever hacks.';
-    }
+    const personalities = {
+      cpp: {
+        title: '🧠 The Structured Thinker (C++)',
+        desc: 'You love logic, structure, and solving problems step-by-step. You’d rock at building strong backend systems and efficient code.'
+      },
+      python: {
+        title: '🐍 The Minimalist Coder (Python)',
+        desc: 'You believe in writing clean, readable, and purposeful code. You’d thrive in automation, data, or backend simplicity.'
+      },
+      js: {
+        title: '🎨 The Creative Hacker (JavaScript)',
+        desc: 'You thrive in chaos, experiment fearlessly, and make magic with pixels and logic. Your energy belongs in interactive design and clever hacks.'
+      },
+      db: {
+        title: '🧱 The Data Whisperer (DB/SQL)',
+        desc: 'You love organizing information, writing clean queries, and designing bulletproof schemas. Your talent is making data meaningful.'
+      },
+      frontend: {
+        title: '💅 The Pixel Perfectionist (Frontend)',
+        desc: 'Design is your passion, and you care deeply about how users experience your work. From colors to animations — you make code beautiful.'
+      }
+    };
 
-    document.getElementById('personalityTitle').innerText = title;
-    document.getElementById('personalityDesc').innerText = desc;
+    document.getElementById('personalityTitle').innerText = personalities[maxKey].title;
+    document.getElementById('personalityDesc').innerText = personalities[maxKey].desc;
     document.getElementById('resultBox').style.display = 'block';
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
